@@ -20,30 +20,30 @@ class StreetViewConfig:
         f"{Path(__file__).resolve().parent.parent.parent}/local_data/streetview_links"
     )
     LOCAL_METADATA_FOLDER: str = f"{Path(__file__).resolve().parent.parent.parent}/local_data/streetview_metadata"
-    PLACE = "Santo_Domingo_Dominican_Republic"
+    PLACE = "Iraq"
     META_BASE = "https://maps.googleapis.com/maps/api/streetview/metadata?"
 
 
 @dataclass
 class OSMConfig:
-    TAGS = {"building": True}
-    PLACE = "Santo Domingo, Dominican Republic"
+    TAGS = {"man_made": "petroleum_well"}
+    PLACE = "Iraq"
 
 
 @dataclass
 class DataConfig:
-    COUNTRY_CODES = ["DO"]
-    YEAR: int = 2020
-    MON_START: int = 1
-    DATE_START: int = 1
-    YEAR_END: int = 2021
-    MON_END: int = 8
-    DATE_END: int = 22
-    PLACE = "Santo Domingo, Dominican Republic"
+    COUNTRY_CODES = ["IQ"]
+    YEAR: int = 2021
+    MON_START: int = 7
+    DATE_START: int = 13
+    YEAR_END: int = 2022
+    MON_END: int = 1
+    DATE_END: int = 8
+    PLACE = "Iraq"
     BASE_FOLDER = "/ee_data"
 
     LANDSAT_IMAGE_COLLECTION: str = "LANDSAT/LC08/C01/T1"
-    MODEL_NAME = "LANDSAT"
+    MODEL_NAME = "COPERNICUS"
     LANDSAT_IMAGE_BAND: Sequence[str] = field(
         default_factory=lambda: ["B4", "B3", "B2"]
     )
@@ -70,6 +70,14 @@ class DataConfig:
 
     LAND_COVER_IMAGE_COLLECTION: str = "COPERNICUS/Landcover/100m/Proba-V-C3/Global"
     LAND_COVER_IMAGE_BAND: str = "discrete_classification"
+
+    METHANE_IMAGE_COLLECTION: str = "COPERNICUS/S5P/OFFL/L3_CH4"
+    METHANE_IMAGE_BAND: Sequence[str] = field(
+        default_factory=lambda: [
+            "CH4_column_volume_mixing_ratio_dry_air",
+            "aerosol_height",
+        ]
+    )
 
     COUNTRY_BOUNDING_BOXES: Dict[
         StrictStr, Tuple[StrictStr, Tuple[float, float, float, float]]

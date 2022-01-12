@@ -4,9 +4,8 @@ from joblib import Parallel, delayed
 import pandas as pd
 import ee
 
-import bootstrap  # noqa
-from config.model_settings import DataConfig
-from utils.utils import ee_array_to_df
+from reinventing_catastrophe_modelling.config.model_settings import DataConfig
+from reinventing_catastrophe_modelling.utils.utils import ee_array_to_df
 
 
 class LoadEEData:
@@ -53,8 +52,8 @@ class LoadEEData:
             year_end=config.YEAR_END,
             mon_end=config.MON_END,
             date_end=config.DATE_END,
-            image_collection=config.LANDSAT_IMAGE_COLLECTION,
-            image_band=config.LANDSAT_IMAGE_BAND,
+            image_collection=config.METHANE_IMAGE_COLLECTION,
+            image_band=config.METHANE_IMAGE_BAND,
             folder=config.BASE_FOLDER,
             model_name=config.MODEL_NAME,
             place=config.PLACE,
@@ -69,9 +68,7 @@ class LoadEEData:
         print(f"Downloading {self.model_name} data for {self.place}")
         building_footprint_gdf = self._get_xy(building_footprint_gdf)
         building_footprints_satellite_list = []
-        for lon, lat in zip(
-            building_footprint_gdf.x, building_footprint_gdf.y
-        ):
+        for lon, lat in zip(building_footprint_gdf.x, building_footprint_gdf.y):
             # Initialize the library.
             ee.Initialize()
             centroid_point = ee.Geometry.Point(lon, lat)

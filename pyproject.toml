@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "reinventing-catastrophe-modelling"
-version = "0.1.0"
+version = "0.1.2"
 description = ""
 authors = ["ChristinaLast <christina.last@outlook.com>"]
 
@@ -28,6 +28,7 @@ setuptools = "^57.4.0"
 osmnx = "^1.1.1"
 google = "^3.0.0"
 google-streetview = "^1.2.9"
+keplergl = "^0.3.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
